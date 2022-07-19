@@ -3,6 +3,7 @@ import Square from "./Square";
 
 const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const [xTurn, setXTurn] = useState(true);
 
   console.log(squares);
 
@@ -11,7 +12,9 @@ const Board = () => {
       return;
     }
     const newSquares = [...squares];
+    newSquares[i] = xTurn ? "X" : "O";
     setSquares(newSquares);
+    setXTurn(!xTurn);
   };
 
   return (
