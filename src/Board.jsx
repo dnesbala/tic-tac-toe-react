@@ -8,7 +8,7 @@ const Board = () => {
   console.log(squares);
 
   const handleClick = (i) => {
-    if (checkWinner(squares) || squares[i]) {
+    if (winner || squares[i]) {
       return;
     }
     const newSquares = [...squares];
@@ -45,6 +45,8 @@ const Board = () => {
     return null;
   };
 
+  const winner = checkWinner(squares);
+
   return (
     <div className="board-container">
       <h2>Tic-Tac-Toe</h2>
@@ -63,6 +65,9 @@ const Board = () => {
         <Square value={squares[7]} onClick={() => handleClick(7)} />
         <Square value={squares[8]} onClick={() => handleClick(8)} />
       </div>
+      {winner == null
+        ? `Next turn : ${xTurn ? "X" : "O"}`
+        : `Winner : ${winner}`}
     </div>
   );
 };
