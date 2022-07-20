@@ -47,6 +47,10 @@ const Board = () => {
 
   const winner = checkWinner(squares);
 
+  const restartGame = () => {
+    setSquares(Array(9).fill(null));
+  };
+
   return (
     <div className="board-container">
       <h2>Tic-Tac-Toe</h2>
@@ -68,6 +72,7 @@ const Board = () => {
       {winner == null
         ? `Next turn : ${xTurn ? "X" : "O"}`
         : `Winner : ${winner}`}
+      <button onClick={restartGame}>Restart Game</button>
     </div>
   );
 };
